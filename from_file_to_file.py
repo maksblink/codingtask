@@ -1,5 +1,5 @@
-file_1 = open("file.txt", 'r')
-lines = file_1.readlines()
+file = open("file.txt", 'r')
+lines = file.readlines()
 # print("lines :", lines)
 
 str_tab = []
@@ -35,30 +35,37 @@ print("tab_for_all :", tab_for_all)
 print("amount of elements in the list :", len(tab_for_all))
 
 print("\n")
+final_tab_for_all = []
 
-for i in range(1):
+# for i in range(len(tab_for_all) / 4):
+for i in range(124):
     small = min(tab_for_all)
     index_of_small = tab_for_all.index(small)
-    pre_small = tab_for_all[index_of_small - 1]
-    print("small :", small)
-    print("pre small :", pre_small)
+    if index_of_small != 0:
+        pre_small = tab_for_all[index_of_small - 1]
+    else:
+        pre_small = tab_for_all[len(tab_for_all) - 1]
 
-    print("\n")
+    # print("small :", small)
+    # print("pre small :", pre_small)
+
+    # print("\n")
 
     big = max(tab_for_all)
     index_of_big = tab_for_all.index(big)
-    pre_big = tab_for_all[index_of_big - 1]
-    print("big :", big)
-    print("pre big :", pre_big)
-
-    final_tab_for_all = []
+    if index_of_big != 0:
+        pre_big = tab_for_all[index_of_big - 1]
+    else:
+        pre_big = tab_for_all[len(tab_for_all) - 1]
+    # print("big :", big)
+    # print("pre big :", pre_big)
 
     final_tab_for_all.append(small)
     final_tab_for_all.append(big)
     final_tab_for_all.append(pre_small)
     final_tab_for_all.append(pre_big)
 
-    print("\n")
+    # print("\n")
 
     tab_for_all.remove(small)
     tab_for_all.remove(big)
@@ -107,4 +114,4 @@ for i in range(1):
 # print("final_tab :", final_tab)
 
 
-file_1.close()
+file.close()
