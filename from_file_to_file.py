@@ -35,21 +35,18 @@ print("\n")
 final_tab_for_all = []
 
 if len(tab_for_all) % 4 == 0:
-    pass
+    what_to_do = 'nothing'
+
 elif len(tab_for_all) % 4 == 1:
-    print("new small")
+    what_to_do = "new small"
+
 elif len(tab_for_all) % 4 == 2:
-    print("new small")
-    print("new big")
+    what_to_do = "new small, new big"
 
 elif len(tab_for_all) % 4 == 3:
-    print("new small")
-    print("new big")
-    print("new pre small")
+    what_to_do = "new small, new big, new pre small"
 
-interation = int(len(tab_for_all) / 4)
-
-for i in range(interation):
+for i in range(int(len(tab_for_all) / 4)):
     small = min(tab_for_all)
     index_of_small = tab_for_all.index(small)
 
@@ -103,7 +100,30 @@ for i in range(interation):
     # print("final_tab_for_all :", final_tab_for_all)
     # print("amount of elements left in the list:", len(tab_for_all))
 
+if what_to_do == 'nothing':
+    pass
+
+elif what_to_do == 'new small':
+    small = min(tab_for_all)
+    final_tab_for_all.append(small)
+
+elif what_to_do == 'new small, new big':
+    small = min(tab_for_all)
+    final_tab_for_all.append(small)
+    big = max(tab_for_all)
+    final_tab_for_all.append(big)
+
+elif what_to_do == 'new small, new big, new pre small':
+    small = min(tab_for_all)
+    final_tab_for_all.append(small)
+    big = max(tab_for_all)
+    final_tab_for_all.append(big)
+    tab_for_all.remove(small)
+    tab_for_all.remove(big)
+    final_tab_for_all.append(tab_for_all[0])
+
 print("final_tab_for_all :", final_tab_for_all)
+print("final_tab_for_all :", tab_for_all)
 print("final_tab_for_all :", len(final_tab_for_all))
 
 # for i in int_tab:
