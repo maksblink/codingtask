@@ -32,38 +32,41 @@ for tab in int_tab:
 
 
 print("tab_for_all :", tab_for_all)
-print("amount of elements :", len(tab_for_all))
-
-small = min(tab_for_all)
-index_of_small = tab_for_all.index(small)
-print("small :", small)
-print("index_of_small :", index_of_small)
-
-big = max(tab_for_all)
-index_of_big = tab_for_all.index(big)
-print("big :", big)
-print("index_of_big :", index_of_big)
-
-pre_small = tab_for_all[index_of_small - 1]
-pre_big = tab_for_all[index_of_big - 1]
-
-
-final_tab_for_all = []
-
-final_tab_for_all.append(small)
-final_tab_for_all.append(big)
-final_tab_for_all.append(tab_for_all[index_of_small - 1])
-final_tab_for_all.append(tab_for_all[index_of_big - 1])
+print("amount of elements in the list :", len(tab_for_all))
 
 print("\n")
 
-print(tab_for_all.remove(small))
-print(tab_for_all.remove(big))
-print(tab_for_all.remove(index_of_small - 1))
-print(tab_for_all.remove(index_of_big - 1))
+for i in range(1):
+    small = min(tab_for_all)
+    index_of_small = tab_for_all.index(small)
+    pre_small = tab_for_all[index_of_small - 1]
+    print("small :", small)
+    print("pre small :", pre_small)
 
-print(final_tab_for_all)
-# print(len(tab_for_all))
+    print("\n")
+
+    big = max(tab_for_all)
+    index_of_big = tab_for_all.index(big)
+    pre_big = tab_for_all[index_of_big - 1]
+    print("big :", big)
+    print("pre big :", pre_big)
+
+    final_tab_for_all = []
+
+    final_tab_for_all.append(small)
+    final_tab_for_all.append(big)
+    final_tab_for_all.append(pre_small)
+    final_tab_for_all.append(pre_big)
+
+    print("\n")
+
+    tab_for_all.remove(small)
+    tab_for_all.remove(big)
+    tab_for_all.remove(pre_small)
+    tab_for_all.remove(pre_big)
+
+    print("final_tab_for_all :", final_tab_for_all)
+    print("amount of elements left in the list:", len(tab_for_all))
 
 # for i in int_tab:
 #     i.sort()
