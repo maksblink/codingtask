@@ -11,6 +11,9 @@ for line in lines:
         smaller_tab[-1] = smaller_tab[-1][:-1]
     str_tab.append(smaller_tab)
 
+horizontally = len(smaller_tab)
+vertically = len(str_tab)
+
 # print("str tab :", str_tab)
 
 int_tab = []
@@ -131,12 +134,14 @@ new_file = open("new_file.txt", 'w')
 final_str = ""
 
 counter = 0
-for i in range(52):
-    for j in range(16):
+for i in range(vertically):
+    for j in range(horizontally):
         final_str += str(final_tab_for_all[counter])
-        final_str += '\t'
+        if j - horizontally != -1:
+            final_str += '\t'
         counter += 1
-    final_str += '\n'
+    if i - vertically != -1:
+        final_str += '\n'
 
 new_file.write(final_str)
 
