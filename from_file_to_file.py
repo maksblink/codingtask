@@ -1,52 +1,54 @@
 file_1 = open("file.txt", 'r')
 lines = file_1.readlines()
-# print(lines)
+print("lines: ", lines)
 
-tab = []
+str_tab = []
 
 for line in lines:
     smaller_tab = line.split("\t")
     if smaller_tab[-1][-1] == '\n':
         smaller_tab[-1] = smaller_tab[-1][:-1]
-    tab.append(smaller_tab)
+    str_tab.append(smaller_tab)
 
-print(tab)
+print("str tab :", str_tab)
 
-new_tab = []
+int_tab = []
 new_smaller_tab = []
 
-for line in tab:
+for line in str_tab:
     for number in line:
         new_smaller_tab.append(int(number))
-    new_tab.append(new_smaller_tab)
+    int_tab.append(new_smaller_tab)
     new_smaller_tab = []
 
+print("new tab :", int_tab)
 
-print(new_tab)
+for i in int_tab:
+    i.sort()
 
-# counter_line = 0
-# counter_number = 0
-#
-#
-# for line in tab:
-#     for number in line:
-#         tab[counter_line][counter_number] = int(number)
-#     counter_number = 0
-#
-# print(tab)
+print("new sorted tab :", int_tab)
 
-# for i in tab:
-#     i.sort()
+smaller_half_of_new_tab = []
+bigger_half_of_new_tab = []
 
-# print(tab)
-# tab_sort =
+new_new_tab = []
 
+counter = 1
 
-# add_some_zeros(tab)
-# print(tab)
+for tab in int_tab:
+    new_new_tab.append([])
 
-# for i in tab:
-#     print(len(i))
-#
-#
-# # file.close()
+    counter += 1
+
+i = 1
+
+# while i <= 8:
+#     print(i)
+#     i += 1
+
+###
+###
+###
+###
+
+file_1.close()
