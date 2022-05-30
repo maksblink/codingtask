@@ -1,6 +1,6 @@
 file = open("file.txt", 'r')
 lines = file.readlines()
-# print("lines :", lines)
+print("lines :", lines)
 
 str_tab = []
 
@@ -10,7 +10,7 @@ for line in lines:
         smaller_tab[-1] = smaller_tab[-1][:-1]
     str_tab.append(smaller_tab)
 
-# print("str tab :", str_tab)
+print("str tab :", str_tab)
 
 int_tab = []
 new_smaller_tab = []
@@ -21,15 +21,12 @@ for line in str_tab:
     int_tab.append(new_smaller_tab)
     new_smaller_tab = []
 
-# print("int tab :", int_tab)
+print("int tab :", int_tab)
 tab_for_all = []
 
 for tab in int_tab:
     for x in tab:
         tab_for_all.append(x)
-
-# print(tab_for_all.count(99963))
-
 
 print("tab_for_all :", tab_for_all)
 print("amount of elements in the list :", len(tab_for_all))
@@ -37,8 +34,22 @@ print("amount of elements in the list :", len(tab_for_all))
 print("\n")
 final_tab_for_all = []
 
-# for i in range(len(tab_for_all) / 4):
-for i in range(208):
+if len(tab_for_all) % 4 == 0:
+    pass
+elif len(tab_for_all) % 4 == 1:
+    print("new small")
+elif len(tab_for_all) % 4 == 2:
+    print("new small")
+    print("new big")
+
+elif len(tab_for_all) % 4 == 3:
+    print("new small")
+    print("new big")
+    print("new pre small")
+
+interation = int(len(tab_for_all) / 4)
+
+for i in range(interation):
     small = min(tab_for_all)
     index_of_small = tab_for_all.index(small)
 
@@ -85,22 +96,15 @@ for i in range(208):
         index_of_pre_big = len(tab_for_all) - 1
         pre_big = tab_for_all[index_of_pre_big]
 
-    # print("small :", small)
-    # print("pre small :", pre_small)
-
-    # print("\n")
-
-    # print("big :", big)
-    # print("pre big :", pre_big)
-
     final_tab_for_all.append(pre_big)
-
-    # print("\n")
 
     tab_for_all.remove(pre_big)
 
-    print("final_tab_for_all :", final_tab_for_all)
-    print("amount of elements left in the list:", len(tab_for_all))
+    # print("final_tab_for_all :", final_tab_for_all)
+    # print("amount of elements left in the list:", len(tab_for_all))
+
+print("final_tab_for_all :", final_tab_for_all)
+print("final_tab_for_all :", len(final_tab_for_all))
 
 # for i in int_tab:
 #     i.sort()
