@@ -1,31 +1,36 @@
 file = open("file.txt", 'r')
 lines = file.readlines()
 
-# print("lines :", lines)
-
 str_tab = []
 
+separator = input("What kind of separator did you use? :")
+print("Separator is :", separator)
+
 for line in lines:
-    smaller_tab = line.split("\t")
+    smaller_tab = line.split(separator)
     if smaller_tab[-1][-1] == '\n':
         smaller_tab[-1] = smaller_tab[-1][:-1]
     str_tab.append(smaller_tab)
 
-horizontally = len(smaller_tab)
-vertically = len(str_tab)
+try:
+    horizontally = len(smaller_tab)
+    vertically = len(str_tab)
 
-# print("str tab :", str_tab)
+except NameError:
+    print("Your matrix may be empty.")
 
 int_tab = []
 new_smaller_tab = []
 
-for line in str_tab:
-    for number in line:
-        new_smaller_tab.append(int(number))
-    int_tab.append(new_smaller_tab)
-    new_smaller_tab = []
+try:
+    for line in str_tab:
+        for number in line:
+            new_smaller_tab.append(int(number))
+        int_tab.append(new_smaller_tab)
+        new_smaller_tab = []
 
-# print("int tab :", int_tab)
+except ValueError:
+    print("Something is wrong with your matrix.")
 
 tab_for_all = []
 
@@ -34,7 +39,7 @@ for tab in int_tab:
         tab_for_all.append(x)
 
 print("tab_for_all :", tab_for_all)
-print("amount of elements in the list :", len(tab_for_all))
+print("Amount of elements in the list :", len(tab_for_all))
 
 print("\n")
 
@@ -110,7 +115,7 @@ elif len(tab_for_all) % 4 == 3:
     final_tab_for_all.append(tab_for_all[0])
 
 print("final_tab_for_all :", final_tab_for_all)
-print("final_tab_for_all :", len(final_tab_for_all))
+print("Amount of elements in final_tab_for_all :", len(final_tab_for_all))
 
 file.close()
 
@@ -119,14 +124,22 @@ new_file = open("new_file.txt", 'w')
 final_str = ""
 
 counter = 0
-for i in range(vertically):
-    for j in range(horizontally):
-        final_str += str(final_tab_for_all[counter])
-        if j - horizontally != -1:
-            final_str += '\t'
-        counter += 1
-    if i - vertically != -1:
-        final_str += '\n'
+
+try:
+    for i in range(vertically):
+        for j in range(horizontally):
+            final_str += str(final_tab_for_all[counter])
+            if j - horizontally != -1:
+                final_str += '\t'
+            counter += 1
+        if i - vertically != -1:
+            final_str += '\n'
+
+except NameError:
+    print("Your matrix may be empty.")
+
+except IndexError:
+    print("Something is wrong with your matrix.")
 
 new_file.write(final_str)
 
