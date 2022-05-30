@@ -1,6 +1,6 @@
 file_1 = open("file.txt", 'r')
 lines = file_1.readlines()
-print("lines: ", lines)
+print("lines :", lines)
 
 str_tab = []
 
@@ -48,13 +48,18 @@ for tab in int_tab:
 
 print("new int tab :", new_int_tab)
 
-# while i <= 8:
-#     print(i)
-#     i += 1
+final_tab = []
 
-###
-###
-###
-###
+counter = 0
+
+for tab in new_int_tab:
+    smaller_tab = []
+    for i in range(8):
+        smaller_tab.append(tab[0][i])
+        smaller_tab.append(tab[1][i])
+    final_tab.append(smaller_tab)
+    smaller_tab = []
+
+print("final_tab :", final_tab)
 
 file_1.close()
