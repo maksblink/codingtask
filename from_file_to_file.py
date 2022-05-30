@@ -38,38 +38,65 @@ print("\n")
 final_tab_for_all = []
 
 # for i in range(len(tab_for_all) / 4):
-for i in range(124):
+for i in range(208):
     small = min(tab_for_all)
     index_of_small = tab_for_all.index(small)
+
+    final_tab_for_all.append(small)
+
+    big = max(tab_for_all)
+    index_of_big = tab_for_all.index(big)
+
+    final_tab_for_all.append(big)
+
+    tab_for_all.remove(small)
+    tab_for_all.remove(big)
+
     if index_of_small != 0:
-        pre_small = tab_for_all[index_of_small - 1]
+        if index_of_small < index_of_big:
+            index_of_pre_small = index_of_small - 1
+            pre_small = tab_for_all[index_of_pre_small]
+        else:
+            index_of_pre_small = index_of_small - 2
+            pre_small = tab_for_all[index_of_pre_small]
     else:
-        pre_small = tab_for_all[len(tab_for_all) - 1]
+        index_of_pre_small = len(tab_for_all) - 1
+        pre_small = tab_for_all[index_of_pre_small]
+
+    final_tab_for_all.append(pre_small)
+    tab_for_all.remove(pre_small)
+
+    if index_of_big != 0:
+        if index_of_big < index_of_small:
+            if index_of_big < index_of_pre_small:
+                index_of_pre_big = index_of_big - 1
+                pre_big = tab_for_all[index_of_pre_big]
+            else:
+                index_of_pre_big = index_of_big - 2
+                pre_big = tab_for_all[index_of_pre_big]
+        else:
+            if index_of_big < index_of_pre_small:
+                index_of_pre_big = index_of_big - 2
+                pre_big = tab_for_all[index_of_pre_big]
+            else:
+                index_of_pre_big = index_of_big - 3
+                pre_big = tab_for_all[index_of_pre_big]
+    else:
+        index_of_pre_big = len(tab_for_all) - 1
+        pre_big = tab_for_all[index_of_pre_big]
 
     # print("small :", small)
     # print("pre small :", pre_small)
 
     # print("\n")
 
-    big = max(tab_for_all)
-    index_of_big = tab_for_all.index(big)
-    if index_of_big != 0:
-        pre_big = tab_for_all[index_of_big - 1]
-    else:
-        pre_big = tab_for_all[len(tab_for_all) - 1]
     # print("big :", big)
     # print("pre big :", pre_big)
 
-    final_tab_for_all.append(small)
-    final_tab_for_all.append(big)
-    final_tab_for_all.append(pre_small)
     final_tab_for_all.append(pre_big)
 
     # print("\n")
 
-    tab_for_all.remove(small)
-    tab_for_all.remove(big)
-    tab_for_all.remove(pre_small)
     tab_for_all.remove(pre_big)
 
     print("final_tab_for_all :", final_tab_for_all)
