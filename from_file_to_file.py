@@ -6,6 +6,8 @@ str_tab = []
 separator = input("What kind of separator did you use? :")
 print("Separator is :", separator)
 
+print("\n")
+
 for line in lines:
     smaller_tab = line.split(separator)
     if smaller_tab[-1][-1] == '\n':
