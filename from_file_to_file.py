@@ -21,26 +21,32 @@ for line in str_tab:
     int_tab.append(new_smaller_tab)
     new_smaller_tab = []
 
-print("new tab :", int_tab)
+print("int tab :", int_tab)
 
 for i in int_tab:
     i.sort()
 
-print("new sorted tab :", int_tab)
+print("int sorted tab :", int_tab)
 
-smaller_half_of_new_tab = []
-bigger_half_of_new_tab = []
+new_int_tab = []
 
-new_new_tab = []
-
-counter = 1
+bigger_half_of_int_tab = []
+smaller_half_of_int_tab = []
 
 for tab in int_tab:
-    new_new_tab.append([])
+    for i in range(8):
+        smaller_half_of_int_tab.append(tab[i])
+    for i in range(8):
+        bigger_half_of_int_tab.append(tab[8 + i])
 
-    counter += 1
+    bigger_half_of_int_tab.reverse()
 
-i = 1
+    new_int_tab.append([smaller_half_of_int_tab, bigger_half_of_int_tab])
+
+    bigger_half_of_int_tab = []
+    smaller_half_of_int_tab = []
+
+print("new int tab :", new_int_tab)
 
 # while i <= 8:
 #     print(i)
