@@ -1,6 +1,6 @@
 file_1 = open("file.txt", 'r')
 lines = file_1.readlines()
-print(lines)
+# print(lines)
 
 tab = []
 
@@ -12,13 +12,34 @@ for line in lines:
 
 print(tab)
 
-# def add_some_zeros(tab):
-#     max_lenght = max(len(elem) for elem in tab)
-#     for t in tab:
-#         a = max_lenght - len(t)
-#         for i in range(a):
-#             t.append(None)
-#     return tab
+new_tab = []
+new_smaller_tab = []
+
+for line in tab:
+    for number in line:
+        new_smaller_tab.append(int(number))
+    new_tab.append(new_smaller_tab)
+    new_smaller_tab = []
+
+
+print(new_tab)
+
+# counter_line = 0
+# counter_number = 0
+#
+#
+# for line in tab:
+#     for number in line:
+#         tab[counter_line][counter_number] = int(number)
+#     counter_number = 0
+#
+# print(tab)
+
+# for i in tab:
+#     i.sort()
+
+# print(tab)
+# tab_sort =
 
 
 # add_some_zeros(tab)
@@ -26,6 +47,6 @@ print(tab)
 
 # for i in tab:
 #     print(len(i))
-
-
-# file.close()
+#
+#
+# # file.close()
