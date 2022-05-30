@@ -1,6 +1,7 @@
 file = open("file.txt", 'r')
 lines = file.readlines()
-print("lines :", lines)
+
+# print("lines :", lines)
 
 str_tab = []
 
@@ -10,7 +11,7 @@ for line in lines:
         smaller_tab[-1] = smaller_tab[-1][:-1]
     str_tab.append(smaller_tab)
 
-print("str tab :", str_tab)
+# print("str tab :", str_tab)
 
 int_tab = []
 new_smaller_tab = []
@@ -21,7 +22,8 @@ for line in str_tab:
     int_tab.append(new_smaller_tab)
     new_smaller_tab = []
 
-print("int tab :", int_tab)
+# print("int tab :", int_tab)
+
 tab_for_all = []
 
 for tab in int_tab:
@@ -97,9 +99,6 @@ for i in range(int(len(tab_for_all) / 4)):
 
     tab_for_all.remove(pre_big)
 
-    # print("final_tab_for_all :", final_tab_for_all)
-    # print("amount of elements left in the list:", len(tab_for_all))
-
 if what_to_do == 'nothing':
     pass
 
@@ -123,46 +122,22 @@ elif what_to_do == 'new small, new big, new pre small':
     final_tab_for_all.append(tab_for_all[0])
 
 print("final_tab_for_all :", final_tab_for_all)
-print("final_tab_for_all :", tab_for_all)
 print("final_tab_for_all :", len(final_tab_for_all))
 
-# for i in int_tab:
-#     i.sort()
-#
-# print("int sorted tab :", int_tab)
-#
-# new_int_tab = []
-#
-# bigger_half_of_int_tab = []
-# smaller_half_of_int_tab = []
-#
-# for tab in int_tab:
-#     for i in range(8):
-#         smaller_half_of_int_tab.append(tab[i])
-#     for i in range(8):
-#         bigger_half_of_int_tab.append(tab[8 + i])
-#
-#     bigger_half_of_int_tab.reverse()
-#
-#     new_int_tab.append([smaller_half_of_int_tab, bigger_half_of_int_tab])
-#
-#     bigger_half_of_int_tab = []
-#     smaller_half_of_int_tab = []
-#
-# print("new int tab :", new_int_tab)
-#
-# final_tab = []
-#
-#
-# for tab in new_int_tab:
-#     smaller_tab = []
-#     for i in range(8):
-#         smaller_tab.append(tab[0][i])
-#         smaller_tab.append(tab[1][i])
-#     final_tab.append(smaller_tab)
-#     smaller_tab = []
-#
-# print("final_tab :", final_tab)
-
-
 file.close()
+
+new_file = open("new_file.txt", 'w')
+
+final_str = ""
+
+counter = 0
+for i in range(52):
+    for j in range(16):
+        final_str += str(final_tab_for_all[counter])
+        final_str += '\t'
+        counter += 1
+    final_str += '\n'
+
+new_file.write(final_str)
+
+new_file.close()
