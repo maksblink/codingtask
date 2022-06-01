@@ -3,7 +3,8 @@ lines = file.readlines()
 
 str_tab = []
 
-separator = input("What kind of separator did you use? :")
+# separator = input("What kind of separator did you use? :")
+separator = '\t'
 print("Separator is :", separator)
 
 print("\n")
@@ -45,79 +46,36 @@ print("Amount of elements in the list :", len(tab_for_all))
 
 print("\n")
 
-final_tab_for_all = []
+sorted_tab = sorted(tab_for_all)
 
-for i in range(int(len(tab_for_all) / 4)):
-    small = min(tab_for_all)
-    index_of_small = tab_for_all.index(small)
+print("sorted_tab :", sorted_tab)
 
-    final_tab_for_all.append(small)
+interation = len(sorted_tab)
 
-    big = max(tab_for_all)
-    index_of_big = tab_for_all.index(big)
+bigger_half_of_int_tab = []
+smaller_half_of_int_tab = []
 
-    final_tab_for_all.append(big)
+for i in range(int(interation / 2)):
+    smaller_half_of_int_tab.append(sorted_tab[i])
+    bigger_half_of_int_tab.append(sorted_tab[interation - 1 - i])
 
-    tab_for_all.remove(small)
-    tab_for_all.remove(big)
+print("smaller_half_of_int_tab :", smaller_half_of_int_tab)
+print("bigger_half_of_int_tab :", bigger_half_of_int_tab)
+print("len smaller_half_of_int_tab :", len(smaller_half_of_int_tab))
+print("len bigger_half_of_int_tab :", len(bigger_half_of_int_tab))
 
-    if index_of_small != 0:
-        if index_of_small < index_of_big:
-            index_of_pre_small = index_of_small - 1
-            pre_small = tab_for_all[index_of_pre_small]
-        else:
-            index_of_pre_small = index_of_small - 2
-            pre_small = tab_for_all[index_of_pre_small]
-    else:
-        index_of_pre_small = len(tab_for_all) - 1
-        pre_small = tab_for_all[index_of_pre_small]
+final_tab = []
 
-    final_tab_for_all.append(pre_small)
-    tab_for_all.remove(pre_small)
+for i in range(int(interation / 2)):
+    final_tab.append(smaller_half_of_int_tab[i])
+    final_tab.append(bigger_half_of_int_tab[i])
 
-    if index_of_big != 0:
-        if index_of_big < index_of_small:
-            if index_of_big < index_of_pre_small:
-                index_of_pre_big = index_of_big - 1
-                pre_big = tab_for_all[index_of_pre_big]
-            else:
-                index_of_pre_big = index_of_big - 2
-                pre_big = tab_for_all[index_of_pre_big]
-        else:
-            if index_of_big < index_of_pre_small:
-                index_of_pre_big = index_of_big - 2
-                pre_big = tab_for_all[index_of_pre_big]
-            else:
-                index_of_pre_big = index_of_big - 3
-                pre_big = tab_for_all[index_of_pre_big]
-    else:
-        index_of_pre_big = len(tab_for_all) - 1
-        pre_big = tab_for_all[index_of_pre_big]
+if len(sorted_tab) % 2 != 0:
+    index_of_last_index = int(interation / 2)
+    final_tab.append(sorted_tab[index_of_last_index])
 
-    final_tab_for_all.append(pre_big)
-
-    tab_for_all.remove(pre_big)
-
-if len(tab_for_all) % 4 == 1:
-    final_tab_for_all.append(tab_for_all[0])
-
-elif len(tab_for_all) % 4 == 2:
-    small = min(tab_for_all)
-    final_tab_for_all.append(small)
-    big = max(tab_for_all)
-    final_tab_for_all.append(big)
-
-elif len(tab_for_all) % 4 == 3:
-    small = min(tab_for_all)
-    final_tab_for_all.append(small)
-    tab_for_all.remove(small)
-    big = max(tab_for_all)
-    final_tab_for_all.append(big)
-    tab_for_all.remove(big)
-    final_tab_for_all.append(tab_for_all[0])
-
-print("final_tab_for_all :", final_tab_for_all)
-print("Amount of elements in final_tab_for_all :", len(final_tab_for_all))
+print("final_tab :", final_tab)
+print(len(final_tab))
 
 file.close()
 
@@ -130,7 +88,7 @@ counter = 0
 try:
     for i in range(vertically):
         for j in range(horizontally):
-            final_str += str(final_tab_for_all[counter])
+            final_str += str(final_tab[counter])
             if j - horizontally != -1:
                 final_str += '\t'
             counter += 1
