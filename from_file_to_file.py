@@ -3,21 +3,26 @@ lines = file.readlines()
 
 str_tab = []
 
-# separator = input("What kind of separator did you use? :")
-separator = '\t'
+separator = input("What kind of separator did you use? :")
 print("Separator is :", separator)
 
 print("\n")
 
+l_of_smaller_tab = []
+
 for line in lines:
     smaller_tab = line.split(separator)
+    l_of_smaller_tab.append(len(smaller_tab))
     if smaller_tab[-1][-1] == '\n':
         smaller_tab[-1] = smaller_tab[-1][:-1]
     str_tab.append(smaller_tab)
 
 try:
-    horizontally = len(smaller_tab)
+    horizontally = min(l_of_smaller_tab)
     vertically = len(str_tab)
+    adding = 0
+    for i in l_of_smaller_tab:
+        adding += i - horizontally
 
 except NameError:
     print("Your matrix may be empty.")
@@ -61,8 +66,8 @@ for i in range(int(interation / 2)):
 
 print("smaller_half_of_int_tab :", smaller_half_of_int_tab)
 print("bigger_half_of_int_tab :", bigger_half_of_int_tab)
-print("len smaller_half_of_int_tab :", len(smaller_half_of_int_tab))
-print("len bigger_half_of_int_tab :", len(bigger_half_of_int_tab))
+print("Amount of elements in smaller_half_of_int_tab :", len(smaller_half_of_int_tab))
+print("Amount of elements in bigger_half_of_int_tab :", len(bigger_half_of_int_tab))
 
 final_tab = []
 
@@ -75,7 +80,6 @@ if len(sorted_tab) % 2 != 0:
     final_tab.append(sorted_tab[index_of_last_index])
 
 print("final_tab :", final_tab)
-print(len(final_tab))
 
 file.close()
 
@@ -94,6 +98,9 @@ try:
             counter += 1
         if i - vertically != -1:
             final_str += '\n'
+
+    for i in range(adding):
+        final_str += '\t' + str(final_tab[len(final_tab) - 1 - i])
 
 except NameError:
     print("Your matrix may be empty.")
